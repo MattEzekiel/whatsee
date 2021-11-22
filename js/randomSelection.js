@@ -1,5 +1,4 @@
 const indexedDB = window.indexedDB;
-const add = document.querySelector('#add');
 
 /**
  * IndexDB
@@ -23,28 +22,6 @@ if(indexedDB){
 
     request.onerror = (error) => {
         console.log('Error',error);
-    }
-
-    if (add){
-        add.addEventListener('click',() => {
-
-            const data = {
-                movieTitle: localStorage.getItem('Title'),
-                moviePoster: localStorage.getItem('Poster')
-            }
-
-            /*console.log(data);*/
-            addData(data);
-            movieAdded();
-
-        })
-    }
-    
-    const addData = (data) => {
-      const transaction = db.transaction(['movies'],'readwrite');
-      const objetStore = transaction.objectStore('movies');
-      const request = objetStore.add(data);
-      readData();
     }
 
     const readData = () => {
@@ -73,43 +50,34 @@ if(indexedDB){
 
                 cursor.continue();
             } else {
-                section.innerHTML = '<h2>Last movies added:</h2>';
+                section.innerHTML = '<h2>Movie selected:</h2>';
                 section.appendChild(fragment);
                 console.log('No more data');
-
-                displayMovies();
             }
         }
     }
 
-    function movieAdded() {
-        let div = document.createElement('div');
-        let span = document.createElement('span');
-        let body = document.querySelector('body');
-        let img = '<img src="assets/close-circle.svg" alt="close error" class="close-icon" onclick="borrar()">';
-
-
-        div.classList.add('added-movie');
-        span.innerText = "Movie added to WishList";
-        div.appendChild(span);
-        div.innerHTML += img;
-        body.prepend(div);
-    }
-
-    function displayMovies(){
-        let movies = document.querySelectorAll('.movie');
-        let home = document.querySelector('#home');
-
-        if (home){
-            for (let i = 4; i < movies.length; i++){
-                movies[i].remove();
-            }
-            if (movies.length === 0){
-                let section = document.querySelector('#movies');
-                section.innerHTML = '<h2>No movies added yet</h2>';
-            }
+    function random() {
+        const all = document.querySelectorAll('.movie');
+        for ( let i = 0; i < all.length; i++){
+            all[i].classList.add('remove');
         }
-
+        let random = Math.floor(Math.random() * all.length);
+        all[random].classList.remove('remove');
+        all[random].classList.add('show');
+        let erase = document.querySelectorAll('.remove');
+        for (let i = 0; i < erase.length; i++){
+            erase[i].remove();
+        }
+        var confettiSettings = { target: 'my-canvas' };
+        var confetti = new ConfettiGenerator(confettiSettings);
+        confetti.render();
     }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        setTimeout(function () {
+            random();
+        },1000)
+    })
 
 }

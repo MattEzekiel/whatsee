@@ -5,12 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Matías Bubello, Cátedra PWA</title>
-    <link rel="stylesheet" href="css/estilos.css">
     <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
     <link rel="manifest" href="favicon/site.webmanifest">
-    <script src="js/tik-tak-toe.js"></script>
+    <link rel="stylesheet" href="css/estilos.css">
 </head>
 <body>
 <header>
@@ -28,13 +27,13 @@
                     <span class="title">Wishlist</span>
                 </a>
             </li>
-            <li class="list">
+            <li class="list active">
                 <a href="what-see.html">
                     <img src="assets/whatsee.svg" alt="What to See? icon" class="icon">
                     <span class="title">What See?</span>
                 </a>
             </li>
-            <li class="list active">
+            <li class="list">
                 <a href="tik.html">
                     <img src="assets/tic-tac-toe-game-svgrepo-com.svg" alt="Tic Tac Toe" class="icon">
                     <span class="title">Tic Tac Toe</span>
@@ -50,31 +49,19 @@
     </nav>
 </header>
 <div class="toggle"><span class="visually-hidden">Open and close hamburger menu</span></div>
-<main>
-    <h1>Tic Tac Toe - What<span class="text-red">See</span></h1>
-    <div class="display">
-        <p>Player <span class="display-player playerX">X</span>'s turn</p>
-    </div>
-    <div class="container">
-        <div class="tile"><span class="visually-hidden">box</span></div>
-        <div class="tile"><span class="visually-hidden">box</span></div>
-        <div class="tile"><span class="visually-hidden">box</span></div>
-        <div class="tile"><span class="visually-hidden">box</span></div>
-        <div class="tile"><span class="visually-hidden">box</span></div>
-        <div class="tile"><span class="visually-hidden">box</span></div>
-        <div class="tile"><span class="visually-hidden">box</span></div>
-        <div class="tile"><span class="visually-hidden">box</span></div>
-        <div class="tile"><span class="visually-hidden">box</span></div>
-    </div>
-    <div class="display announcer hide"><span class="visually-hidden">Winner will be display here</span></div>
-    <div class="controls">
-        <button id="reset" type="reset"><span>Reset</span></button>
+<main class="movie-selector">
+    <h1>Movie Selector</h1>
+    <div id="movies" class="random">
+        <h2>No movie added</h2>
+        <span class="visually-hidden">Selecting movie...</span>
     </div>
 </main>
 <footer>
     What<span class="text-red">See</span>&copy; 2021
 </footer>
-<script src="js/indexedDB.js"></script>
+<canvas id="my-canvas"></canvas>
 <script src="js/menu.js"></script>
+<script src="js/randomSelection.js"></script>
+<script src="js/confeti.min.js"></script>
 </body>
 </html>

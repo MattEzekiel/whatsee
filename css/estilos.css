@@ -415,7 +415,7 @@ button:disabled{
     filter: grayscale(1);
 }
 
-button[type="submit"], #reset{
+button[type="submit"], #reset, #add{
     position: relative;
     padding: 10px 60px;
     display: flex;
@@ -430,7 +430,7 @@ button[type="submit"], #reset{
     border-radius: 10px;
 }
 
-button[type="submit"]:hover, #reset:hover{
+button[type="submit"]:hover, #reset:hover, #add:hover{
     background-color: crimson;
     box-shadow: 0 0 10px crimson,
    0 0 30px crimson,
@@ -446,7 +446,7 @@ button[type="submit"]:hover, #reset:hover{
     0 0 100px #4b5bf9;
 }
 
-button[type="submit"]::before, #reset::before{
+button[type="submit"]::before, #reset::before, #add::before{
     content: '';
     position: absolute;
     width: 20px;
@@ -461,11 +461,11 @@ button[type="submit"]::before, #reset::before{
     background-color: #4b5bf9;
 }
 
-button[type="submit"]:hover::before, #reset:hover::before{
+button[type="submit"]:hover::before, #reset:hover::before, #add:hover::before{
     width: 120%;
 }
 
-button[type="submit"]::after, #reset::after{
+button[type="submit"]::after, #reset::after, #add::after{
     content: '';
     position: absolute;
     background: #04202e;
@@ -473,7 +473,7 @@ button[type="submit"]::after, #reset::after{
     transition: 0.5s;
 }
 
-button[type="submit"]:hover::after, #reset:hover::after{
+button[type="submit"]:hover::after, #reset:hover::after, #add:hover::after{
     background: crimson;
 }
 
@@ -481,7 +481,7 @@ button[type="submit"]:hover::after, #reset:hover::after{
     background: #4b5bf9;
 }
 
-button[type="submit"] span, #reset span{
+button[type="submit"] span, #reset span, #add span{
     position: relative;
     z-index: 1;
     font-size: 1rem;
@@ -700,6 +700,46 @@ footer{
 .movie:hover img{
     transform: translate(20px,-80px);
     box-shadow: -30px 30px 50px rgba(0,0,0,0.25);
+}
+
+#movies.random{
+    column-gap: 0;
+    row-gap: 0;
+    height: 700px;
+    flex-wrap: nowrap;
+    align-items: flex-start;
+    justify-content: center;
+    margin: 0;
+}
+
+#movies.random .movie{
+    box-shadow: none;
+    position: absolute;
+    top: 15rem;
+    opacity: 0;
+    transition: 2s;
+}
+
+#movies.random .movie h3{
+    bottom: -1.5rem;
+    font-size: 2rem;
+}
+
+#movies.random .movie.show{
+    opacity: 1;
+}
+
+#movies.random .movie.show:hover img{
+    transform: translate(0);
+}
+
+#my-canvas{
+    position: absolute;
+    height: 100vh;
+}
+
+.movie-selector{
+    z-index: 3;
 }
 
 /*Animations*/
