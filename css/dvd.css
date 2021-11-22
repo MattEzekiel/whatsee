@@ -1,0 +1,27 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    overflow: hidden;
+}
+
+main{
+    position: relative;
+    background-color: #04202e;
+}
+
+.logo{
+    position: absolute;
+    max-width: 200px;
+    width: 100%;
+    fill: crimson;
+}
+
+@media screen and (max-width: 768px) {
+    .logo{
+        width: 100px;
+    }
+}
