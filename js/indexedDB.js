@@ -9,13 +9,13 @@ if(indexedDB){
     const request = indexedDB.open('wishlist',1);
     request.onsuccess = () => {
         db = request.result;
-        console.log('OPEN',db);
+        // console.log('OPEN',db);
         readData();
     }
 
     request.onupgradeneeded = () => {
         db = request.result;
-        console.log('Create',db);
+        // console.log('Create',db);
         const objetStore = db.createObjectStore('movies',{
             keyPath:'movieTitle'
         })
@@ -75,7 +75,7 @@ if(indexedDB){
             } else {
                 section.innerHTML = '<h2>Last movies added:</h2>';
                 section.appendChild(fragment);
-                console.log('No more data');
+                // console.log('No more data');
 
                 displayMovies();
             }

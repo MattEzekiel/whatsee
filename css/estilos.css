@@ -735,11 +735,82 @@ footer{
 
 #my-canvas{
     position: absolute;
-    height: 100vh;
+    height: 100vh !important;
+    width: 100vw !important;
 }
 
 .movie-selector{
     z-index: 3;
+}
+
+@media (max-width: 768px) {
+    main{
+        max-width: 100%;
+        padding: 0 20px;
+    }
+
+    h1{
+        font-size: 3rem;
+    }
+
+    .navigation{
+        left: -100vw;
+    }
+
+    .navigation.active{
+        left: 0;
+        z-index: 10;
+    }
+
+    .toggle{
+        z-index: 10;
+    }
+
+    #movies h2{
+        font-size: 2rem;
+    }
+
+    form{
+        flex-direction: column;
+        padding: 1rem;
+    }
+
+    button[type="submit"], #reset, #add{
+        width: 100%;
+        margin-top: 1rem;
+    }
+
+    button[type="submit"]::before, #reset::before, #add::before{
+        height: 400px;
+    }
+
+    #movies{
+        justify-content: center;
+    }
+
+    .card:hover{
+        transform: perspective(2000px) translateX(0);
+    }
+
+    #detail-movie .content{
+        justify-content: flex-start;
+    }
+
+    .error-movie, .added-movie{
+        top: 15vh;
+        transition: 0.2s;
+        width: 95%;
+        animation: appearMobile ease-in-out 0.5s;
+    }
+
+    .error-movie img, .added-movie img{
+        max-width: 25px;
+        right: 1rem;
+    }
+
+    .error-movie span, .added-movie span{
+        font-size: 1.1rem;
+    }
 }
 
 /*Animations*/
@@ -755,6 +826,21 @@ footer{
 
     100%{
         top: 5vh;
+    }
+}
+
+@keyframes appearMobile {
+    0%{
+        top: 40vh;
+        opacity: 0;
+    }
+
+    50%{
+        opacity: 1;
+    }
+
+    100%{
+        top: 15vh;
     }
 }
 
