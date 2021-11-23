@@ -50,9 +50,13 @@ if(indexedDB){
 
                 cursor.continue();
             } else {
-                section.innerHTML = '<h2>Movie selected:</h2>';
-                section.appendChild(fragment);
-                console.log('No more data');
+                if (cursor != null){
+                    section.innerHTML = '<h2>Movie selected:</h2>';
+                    section.appendChild(fragment);
+                    console.log('No more data');
+                } else {
+                    section.innerHTML = '<h2>There is no movie added</h2>';
+                }
             }
         }
     }

@@ -56,6 +56,7 @@ if(indexedDB){
 
         request.onsuccess = (e) => {
             const cursor = e.target.result;
+            console.log("cursor results:",cursor)
 
             if(cursor){
                 let movieTitle = document.createElement('h3'),
@@ -73,11 +74,15 @@ if(indexedDB){
 
                 cursor.continue();
             } else {
-                section.innerHTML = '<h2>Last movies added:</h2>';
-                section.appendChild(fragment);
-                // console.log('No more data');
+                if (cursor != null){
+                    section.innerHTML = '<h2>Last movies added:</h2>';
+                    section.appendChild(fragment);
+                    // console.log('No more data');
 
-                displayMovies();
+                    displayMovies();
+                } else {
+                    section.innerHTML = '<h2>No movies added</h2>';
+                }
             }
         }
     }
