@@ -1,9 +1,10 @@
+/*
 const indexedDB = window.indexedDB;
 const add = document.querySelector('#add');
 
-/**
+/!**
  * IndexDB
- */
+ *!/
 if(indexedDB){
     let db;
     const request = indexedDB.open('wishlist',1);
@@ -33,13 +34,13 @@ if(indexedDB){
                 moviePoster: localStorage.getItem('Poster')
             }
 
-            /*console.log(data);*/
+            /!*console.log(data);*!/
             addData(data);
             movieAdded();
 
         })
     }
-    
+
     const addData = (data) => {
       const transaction = db.transaction(['movies'],'readwrite');
       const objetStore = transaction.objectStore('movies');
@@ -117,4 +118,58 @@ if(indexedDB){
 
     }
 
+}*/
+
+let db,btn;
+
+function init(){
+    db = new Dexie('Movies');
+    btn = document.querySelector('#add');
+
+    if (btn){
+        btn.addEventListener('submit', addMovieDB);
+        btn.addEventListener('click', showMovie);
+    }
+
+    db.version(1).stores({
+        movies:
+            `movieTitle`
+    });
+
+    db.open()
+        .then(refeshView)
+}
+
+function addMovieDB(event) {
+    event.preventDefault();
+    db.movies.bulkPut([
+        {movieTitle: localStorage.getItem('Title'), moviePoster: localStorage.getItem('Poster')}
+    ])
+        .then(movieAdded)
+}
+
+function showMovie(event) {
+    event.preventDefault();
+    console.log('click');
+}
+
+function refeshView() {
+
+}
+
+function movieAdded() {
+    let div = document.createElement('div');
+    let span = document.createElement('span');
+    let body = document.querySelector('body');
+    let img = '<img src="assets/close-circle.svg" alt="close error" class="close-icon" onclick="borrar()">';
+
+    div.classList.add('added-movie');
+    span.innerText = "Movie added to WishList";
+    div.appendChild(span);
+    div.innerHTML += img;
+    body.prepend(div);
+}
+
+window.onload = function () {
+    init();
 }

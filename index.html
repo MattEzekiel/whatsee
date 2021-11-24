@@ -9,6 +9,9 @@
     <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
     <link rel="stylesheet" href="css/estilos.css">
+    <!--<script src="js/dexie.js"></script>-->
+    <!-- Include Dexie -->
+    <script src="https://unpkg.com/dexie@latest/dist/dexie.js"></script>
     <link rel="manifest" href="manifest.json">
 </head>
 <body>
@@ -77,7 +80,7 @@
                 <p id="plot">Plot: <span class="visually-hidden">Nothing searched yet, search a movie</span></p>
                 <p id="year">Year: <span class="visually-hidden">Nothing searched yet, search a movie</span></p>
                 <p id="genre">Genre: <span class="visually-hidden">Nothing searched yet, search a movie</span></p>
-                <button type="button" id="add"><span>Add to the list</span></button>
+                <button type="submit" id="add"><span>Add to the list</span></button>
             </div>
         </div>
     </section>
@@ -89,8 +92,8 @@
     What<span class="text-red">See</span>&copy; 2021
 </footer>
 <script src="js/menu.js"></script>
-<script src="js/indexedDB.js"></script>
 <script src="js/main.js"></script>
 <script src="js/sw-check.js"></script>
+<script src="js/indexedDB.js"></script>
 </body>
 </html>
