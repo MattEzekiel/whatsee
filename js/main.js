@@ -3,7 +3,7 @@ const input = document.querySelector('input');
 const button = document.querySelector('button');
 const API = "e8586c8d";
 let Movie = '';
-const url = `http://www.omdbapi.com/?apikey=${API}`;
+const url = `https://www.omdbapi.com/?apikey=${API}`;
 
 /**
  * Enable/Disable button

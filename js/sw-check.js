@@ -5,3 +5,11 @@ if ('serviceWorker' in navigator){
 } else {
     console.log('Service Worker no es soportado!');
 }
+
+window.addEventListener('offline', (e) => {
+    console.log('Estoy Offline!');
+})
+
+window.addEventListener('online', (e) =>{
+    console.log('Estoy online');
+})
