@@ -496,7 +496,8 @@ button[type="submit"] span, #reset span, #add span, .delete span{
 .delete{
     margin: auto;
     padding: 1rem;
-    width: fit-content;
+    width: 100%;
+    max-width: 100px;
 }
 
 #plot a{
