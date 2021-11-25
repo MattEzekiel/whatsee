@@ -112,15 +112,15 @@ function movieAdded() {
     body.prepend(div);
 }
 
-function deletear(e) {
-    let peli;
-    if (e.target.hasAttribute('id') && e.target.classList.contains('delete')){
-        e.preventDefault();
+function deletear(event) {
+    let id;
+    if (event.target.hasAttribute('id') && event.target.classList.contains('delete')){
+        event.preventDefault();
 
-        peli = e.target.getAttribute('id');
+        id = event.target.getAttribute("id");
 
-        db.movies.where('movieTitle').equals(peli).delete()
-        .then(refeshView);
+        db.movies.where('movieTitle').equals(id).delete()
+            .then(refreshView);
     }
 }
 
