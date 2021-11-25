@@ -26,6 +26,10 @@ main{
     width: 100%;
 }
 
+.blue-text{
+    color: #4b5bf9;
+}
+
 .navigation{
     position: fixed;
     top: 20px;

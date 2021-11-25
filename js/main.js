@@ -69,7 +69,7 @@ let showHome = function (json) {
         let img = document.querySelector('picture');
 
         title.innerHTML = "Title: " + json.Title;
-        plot.innerHTML = "Plot: " + json.Plot.substring(0,300) + " <a href='detail.html'>[...]. See more</a>";
+        plot.innerHTML = "Plot: " + json.Plot.substring(0,200) + " <a href='detail.html'>[...]. See more</a>";
         year.innerHTML = "Year: " + json.Year;
         genre.innerHTML = "Genre: " + json.Genre;
         img.innerHTML = '<img src="'+ json.Poster +'" alt="'+ json.Title +' poster">';
