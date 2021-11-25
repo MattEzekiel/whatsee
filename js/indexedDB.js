@@ -82,7 +82,19 @@ function random() {
             movies[i].remove();
         }
         const h2 = document.querySelectorAll('h2');
-        h2[1].innerText = "Last movie/s added:";
+        movies.length !== 0 ? h2[1].innerText = "Last movie/s added:" : null;
+    }
+}
+
+function deletear(event) {
+    let id;
+    if (event.target.hasAttribute('id') && event.target.classList.contains('delete')){
+        event.preventDefault();
+
+        id = event.target.getAttribute("id");
+
+        db.movies.where('movieTitle').equals(id).delete()
+            .then(init);
     }
 }
 
@@ -110,18 +122,6 @@ function movieAdded() {
     div.appendChild(span);
     div.innerHTML += img;
     body.prepend(div);
-}
-
-function deletear(event) {
-    let id;
-    if (event.target.hasAttribute('id') && event.target.classList.contains('delete')){
-        event.preventDefault();
-
-        id = event.target.getAttribute("id");
-
-        db.movies.where('movieTitle').equals(id).delete()
-            .then(refreshView);
-    }
 }
 
 /**
