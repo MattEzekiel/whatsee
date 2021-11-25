@@ -6,7 +6,7 @@ let db,btn;
 function init(){
     db = new Dexie('Movies');
     btn = document.querySelector('#add');
-    document.body.addEventListener('click',deletear);
+    document.body.addEventListener("click", deletear);
 
     if (btn){
         btn.addEventListener('click', addMovieDB);
@@ -18,7 +18,7 @@ function init(){
     });
 
     db.open()
-        .then(refeshView)
+        .then(refreshView)
 }
 
 /**
@@ -31,7 +31,7 @@ function addMovieDB(event) {
         {movieTitle: localStorage.getItem('Title'), moviePoster: localStorage.getItem('Poster')}
     ])
         .then(movieAdded)
-        .then(refeshView)
+        .then(refreshView)
         .then(showMovie)
         .then(random)
 }
@@ -90,7 +90,7 @@ function random() {
  *
  * @returns Database to {Array}
  */
-function refeshView() {
+function refreshView() {
     return db.movies.toArray()
     .then(showMovie)
     .then(random);
