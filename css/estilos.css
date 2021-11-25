@@ -488,7 +488,7 @@ button[type="submit"]:hover::after, #reset:hover::after, #add:hover::after{
 button[type="submit"] span, #reset span, #add span{
     position: relative;
     z-index: 1;
-    font-size: 1rem;
+    font-size: 14px;
     text-transform: uppercase;
     font-weight: 700;
 }
