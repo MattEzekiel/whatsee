@@ -419,7 +419,7 @@ button:disabled{
     filter: grayscale(1);
 }
 
-button[type="submit"], #reset, #add{
+button[type="submit"], #reset, #add, .delete{
     position: relative;
     padding: 10px 60px;
     display: flex;
@@ -434,7 +434,7 @@ button[type="submit"], #reset, #add{
     border-radius: 10px;
 }
 
-button[type="submit"]:hover, #reset:hover, #add:hover{
+button[type="submit"]:hover, #reset:hover, #add:hover, .delete:hover{
     background-color: crimson;
     box-shadow: 0 0 10px crimson,
    0 0 30px crimson,
@@ -450,7 +450,7 @@ button[type="submit"]:hover, #reset:hover, #add:hover{
     0 0 100px #4b5bf9;
 }
 
-button[type="submit"]::before, #reset::before, #add::before{
+button[type="submit"]::before, #reset::before, #add::before, .delete::before{
     content: '';
     position: absolute;
     width: 20px;
@@ -465,11 +465,11 @@ button[type="submit"]::before, #reset::before, #add::before{
     background-color: #4b5bf9;
 }
 
-button[type="submit"]:hover::before, #reset:hover::before, #add:hover::before{
+button[type="submit"]:hover::before, #reset:hover::before, #add:hover::before, .delete:hover::before{
     width: 120%;
 }
 
-button[type="submit"]::after, #reset::after, #add::after{
+button[type="submit"]::after, #reset::after, #add::after, .delete::after{
     content: '';
     position: absolute;
     background: #04202e;
@@ -477,7 +477,7 @@ button[type="submit"]::after, #reset::after, #add::after{
     transition: 0.5s;
 }
 
-button[type="submit"]:hover::after, #reset:hover::after, #add:hover::after{
+button[type="submit"]:hover::after, #reset:hover::after, #add:hover::after, .delete:hover::after{
     background: crimson;
 }
 
@@ -485,12 +485,18 @@ button[type="submit"]:hover::after, #reset:hover::after, #add:hover::after{
     background: #4b5bf9;
 }
 
-button[type="submit"] span, #reset span, #add span{
+button[type="submit"] span, #reset span, #add span, .delete span{
     position: relative;
     z-index: 1;
     font-size: 14px;
     text-transform: uppercase;
     font-weight: 700;
+}
+
+.delete{
+    margin: auto;
+    padding: 1rem;
+    width: fit-content;
 }
 
 #plot a{
@@ -658,7 +664,7 @@ footer{
     color: white;
     flex-wrap: wrap;
     column-gap: 20px;
-    row-gap: 40px;
+    row-gap: 90px;
 }
 
 #movies h2{
@@ -787,16 +793,18 @@ footer{
 .navigation.active .status.offline{
     background-color: #fff;
     box-shadow: inset 0 0 15px crimson, 0 0 30px crimson, 0 0 60px crimson, 0 0 100px crimson;
+    animation: ofline 3s ease infinite;
 }
 
 .status.online{
-    background-color: #4b5bf9;
-    box-shadow: 0 0 10px #4b5bf9, 0 0 30px #4b5bf9, 0 0 60px #4b5bf9, 0 0 100px #4b5bf9;
+    background-color: #fff;
+    box-shadow: inset 0 0 15px #4b5bf9, 0 0 30px #4b5bf9, 0 0 60px #4b5bf9, 0 0 100px #4b5bf9;
+    animation: online 3s ease infinite;
 }
 
 .navigation.active .status.online{
-    background-color: #fff;
-    box-shadow: inset 0 0 15px #4b5bf9, 0 0 30px #4b5bf9, 0 0 60px #4b5bf9, 0 0 100px #4b5bf9;
+    background-color: #4b5bf9;
+    box-shadow: 0 0 10px #4b5bf9, 0 0 30px #4b5bf9, 0 0 60px #4b5bf9, 0 0 100px #4b5bf9;
 }
 
 @media (max-width: 768px) {
@@ -831,12 +839,12 @@ footer{
         padding: 1rem;
     }
 
-    button[type="submit"], #reset, #add{
+    button[type="submit"], #reset, #add, .delete{
         width: 100%;
         margin-top: 1rem;
     }
 
-    button[type="submit"]::before, #reset::before, #add::before{
+    button[type="submit"]::before, #reset::before, #add::before, .delete:before{
         height: 400px;
     }
 
@@ -924,4 +932,32 @@ footer{
     0%{background-position:50% 0}
     50%{background-position:51% 100%}
     100%{background-position:50% 0}
+}
+
+@keyframes online {
+    0%{
+        box-shadow: inset 0 0 15px #4b5bf9, 0 0 30px #4b5bf9, 0 0 60px #4b5bf9, 0 0 100px #4b5bf9;
+    }
+
+    50%{
+        box-shadow: inset 0 0 35px #4b5bf9, 0 0 30px #4b5bf9, 0 0 60px #4b5bf9, 0 0 100px #4b5bf9;
+    }
+
+    100%{
+        box-shadow: inset 0 0 15px #4b5bf9, 0 0 30px #4b5bf9, 0 0 60px #4b5bf9, 0 0 100px #4b5bf9;
+    }
+}
+
+@keyframes offline {
+    0%{
+        box-shadow: inset 0 0 15px crimson, 0 0 30px crimson, 0 0 60px crimson, 0 0 100px crimson;
+    }
+
+    50%{
+        box-shadow: inset 0 0 35px crimson, 0 0 30px crimson, 0 0 60px crimson, 0 0 100px crimson;
+    }
+
+    100%{
+        box-shadow: inset 0 0 15px crimson, 0 0 30px crimson, 0 0 60px crimson, 0 0 100px crimson;
+    }
 }

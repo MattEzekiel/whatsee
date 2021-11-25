@@ -6,6 +6,7 @@ let db,btn;
 function init(){
     db = new Dexie('Movies');
     btn = document.querySelector('#add');
+    document.body.addEventListener('click',deletear);
 
     if (btn){
         btn.addEventListener('click', addMovieDB);
@@ -46,19 +47,43 @@ function showMovie(movies) {
     movies.forEach(function (movie){
         let movieTitle = document.createElement('h3'),
             moviePoster = document.createElement('img'),
-            movieDiv = document.createElement('div');
+            movieDiv = document.createElement('div'),
+            erase = document.createElement('button'),
+            span = document.createElement('span');
 
+        span.innerHTML = "delete";
+        erase.setAttribute('id',movie.movieTitle);
+        erase.setAttribute('class','delete');
         movieTitle.textContent = movie.movieTitle;
         moviePoster.setAttribute('src',movie.moviePoster);
         moviePoster.setAttribute('alt',movie.movieTitle + " Poster");
         movieDiv.setAttribute('class','movie');
 
+        erase.appendChild(span);
         movieDiv.appendChild(moviePoster);
         movieDiv.appendChild(movieTitle);
+        movieDiv.appendChild(erase);
         fragment.appendChild(movieDiv);
     })
-    section.innerHTML = '<h2>All movies added:</h2>';
+
+    movies.length !== 0 ? section.innerHTML = '<h2>All movies added:</h2>' : null;
     section.appendChild(fragment);
+}
+
+/**
+ * Detect if home, show only 4
+ */
+function random() {
+    let movies = document.querySelectorAll('.movie');
+    const home = document.querySelector('#home');
+
+    if(home){
+        for (let i = 4; i < movies.length; i++){
+            movies[i].remove();
+        }
+        const h2 = document.querySelectorAll('h2');
+        h2[1].innerText = "Last movie/s added:";
+    }
 }
 
 /**
@@ -68,7 +93,7 @@ function showMovie(movies) {
 function refeshView() {
     return db.movies.toArray()
     .then(showMovie)
-        .then(random)
+    .then(random);
 }
 
 /**
@@ -87,25 +112,21 @@ function movieAdded() {
     body.prepend(div);
 }
 
+function deletear(e) {
+    let peli;
+    if (e.target.hasAttribute('id') && e.target.classList.contains('delete')){
+        e.preventDefault();
+
+        peli = e.target.getAttribute('id');
+
+        db.movies.where('movieTitle').equals(peli).delete()
+        .then(refeshView);
+    }
+}
+
 /**
  * Starts
  */
 window.onload = function () {
     init();
-}
-
-/**
- * Detect if home, show only 4
- */
-function random() {
-    let movies = document.querySelectorAll('.movie');
-    const home = document.querySelector('#home');
-
-    if(home){
-        for (let i = 4; i < movies.length; i++){
-            movies[i].remove();
-        }
-        const h2 = document.querySelector('h2');
-        h2.innerText = "Last movies added:";
-    }
 }
