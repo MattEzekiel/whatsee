@@ -4,7 +4,7 @@ let db,btn;
  * Initialized
  */
 function init(){
-    db = new Dexie('Movies');
+    db = new Dexie('Wishlist');
     btn = document.querySelector('#add');
     document.body.addEventListener("click", deletear);
 
@@ -86,28 +86,6 @@ function random() {
     }
 }
 
-function deletear(event) {
-    let id;
-    if (event.target.hasAttribute('id') && event.target.classList.contains('delete')){
-        event.preventDefault();
-
-        id = event.target.getAttribute("id");
-
-        db.movies.where('movieTitle').equals(id).delete()
-            .then(init);
-    }
-}
-
-/**
- *
- * @returns Database to {Array}
- */
-function refreshView() {
-    return db.movies.toArray()
-    .then(showMovie)
-    .then(random);
-}
-
 /**
  * Create Notification
  */
@@ -123,6 +101,32 @@ function movieAdded() {
     div.innerHTML += img;
     body.prepend(div);
 }
+
+async function deletear(event) {
+    let id;
+    if (event.target.hasAttribute('id') && event.target.classList.contains('delete')){
+        event.preventDefault();
+
+        id = event.target.getAttribute("id");
+
+        //Por alguna razón no refresca, una razón más para odiar js
+
+        db.movies.where('movieTitle').equals(id).delete()
+            .then(refreshView);
+        window.location.reload();
+    }
+}
+
+/**
+ *
+ * @returns Database to {Array}
+ */
+function refreshView() {
+    return db.movies.toArray()
+    .then(showMovie)
+    .then(random);
+}
+
 
 /**
  * Starts

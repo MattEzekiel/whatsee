@@ -35,7 +35,7 @@ function searchMovie() {
             return response.json()
         })
         .then(function (theJson){
-            console.log(theJson);
+            // console.log(theJson);
             setLocalStorage(theJson);
             showHome(theJson);
         })

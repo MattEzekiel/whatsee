@@ -419,7 +419,7 @@ button:disabled{
     filter: grayscale(1);
 }
 
-button[type="submit"], #reset, #add, .delete{
+button[type="submit"], #reset, #add{
     position: relative;
     padding: 10px 60px;
     display: flex;
@@ -434,7 +434,7 @@ button[type="submit"], #reset, #add, .delete{
     border-radius: 10px;
 }
 
-button[type="submit"]:hover, #reset:hover, #add:hover, .delete:hover{
+button[type="submit"]:hover, #reset:hover, #add:hover{
     background-color: crimson;
     box-shadow: 0 0 10px crimson,
    0 0 30px crimson,
@@ -450,7 +450,7 @@ button[type="submit"]:hover, #reset:hover, #add:hover, .delete:hover{
     0 0 100px #4b5bf9;
 }
 
-button[type="submit"]::before, #reset::before, #add::before, .delete::before{
+button[type="submit"]::before, #reset::before, #add::before{
     content: '';
     position: absolute;
     width: 20px;
@@ -465,11 +465,11 @@ button[type="submit"]::before, #reset::before, #add::before, .delete::before{
     background-color: #4b5bf9;
 }
 
-button[type="submit"]:hover::before, #reset:hover::before, #add:hover::before, .delete:hover::before{
+button[type="submit"]:hover::before, #reset:hover::before, #add:hover::before{
     width: 120%;
 }
 
-button[type="submit"]::after, #reset::after, #add::after, .delete::after{
+button[type="submit"]::after, #reset::after, #add::after{
     content: '';
     position: absolute;
     background: #04202e;
@@ -477,7 +477,7 @@ button[type="submit"]::after, #reset::after, #add::after, .delete::after{
     transition: 0.5s;
 }
 
-button[type="submit"]:hover::after, #reset:hover::after, #add:hover::after, .delete:hover::after{
+button[type="submit"]:hover::after, #reset:hover::after, #add:hover::after{
     background: crimson;
 }
 
@@ -485,7 +485,7 @@ button[type="submit"]:hover::after, #reset:hover::after, #add:hover::after, .del
     background: #4b5bf9;
 }
 
-button[type="submit"] span, #reset span, #add span, .delete span{
+button[type="submit"] span, #reset span, #add span{
     position: relative;
     z-index: 1;
     font-size: 14px;
@@ -496,8 +496,23 @@ button[type="submit"] span, #reset span, #add span, .delete span{
 .delete{
     margin: auto;
     padding: 1rem;
-    width: 100%;
-    max-width: 100px;
+    width: 100px;
+    height: 32px;
+    background-color: transparent;
+    border: 2px solid crimson;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.delete:hover{
+    background-color: crimson;
+    box-shadow: 0 0 10px crimson, 0 0 30px crimson, 0 0 60px crimson, 0 0 100px crimson;
 }
 
 #plot a{
@@ -840,12 +855,12 @@ footer{
         padding: 1rem;
     }
 
-    button[type="submit"], #reset, #add, .delete{
+    button[type="submit"], #reset, #add{
         width: 100%;
         margin-top: 1rem;
     }
 
-    button[type="submit"]::before, #reset::before, #add::before, .delete:before{
+    button[type="submit"]::before, #reset::before, #add::before{
         height: 400px;
     }
 
