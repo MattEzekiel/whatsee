@@ -649,7 +649,7 @@ footer{
 #movies{
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     margin: 3em auto;
     color: white;
     flex-wrap: wrap;
