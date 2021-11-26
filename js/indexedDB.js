@@ -102,7 +102,7 @@ function movieAdded() {
     body.prepend(div);
 }
 
-async function deletear(event) {
+function deletear(event) {
     let id;
     if (event.target.hasAttribute('id') && event.target.classList.contains('delete')){
         event.preventDefault();
