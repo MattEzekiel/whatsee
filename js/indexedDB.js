@@ -44,30 +44,34 @@ function showMovie(movies) {
     const fragment = document.createDocumentFragment();
     const section = document.querySelector('#movies');
 
-    movies.forEach(function (movie){
-        let movieTitle = document.createElement('h3'),
-            moviePoster = document.createElement('img'),
-            movieDiv = document.createElement('div'),
-            erase = document.createElement('button'),
-            span = document.createElement('span');
+    if (movies.length > 0){
+        movies.forEach(function (movie){
+            let movieTitle = document.createElement('h3'),
+                moviePoster = document.createElement('img'),
+                movieDiv = document.createElement('div'),
+                erase = document.createElement('button'),
+                span = document.createElement('span');
 
-        // span.innerHTML = "delete";
-        erase.setAttribute('id',movie.movieTitle);
-        erase.setAttribute('class','delete');
-        movieTitle.textContent = movie.movieTitle;
-        moviePoster.setAttribute('src',movie.moviePoster);
-        moviePoster.setAttribute('alt',movie.movieTitle + " Poster");
-        movieDiv.setAttribute('class','movie');
-        erase.innerHTML="Delete";
+            // span.innerHTML = "delete";
+            erase.setAttribute('id',movie.movieTitle);
+            erase.setAttribute('class','delete');
+            movieTitle.textContent = movie.movieTitle;
+            moviePoster.setAttribute('src',movie.moviePoster);
+            moviePoster.setAttribute('alt',movie.movieTitle + " Poster");
+            movieDiv.setAttribute('class','movie');
+            erase.innerHTML="Delete";
 
-        movieDiv.appendChild(moviePoster);
-        movieDiv.appendChild(movieTitle);
-        movieDiv.appendChild(erase);
-        fragment.appendChild(movieDiv);
-    })
+            movieDiv.appendChild(moviePoster);
+            movieDiv.appendChild(movieTitle);
+            movieDiv.appendChild(erase);
+            fragment.appendChild(movieDiv);
+        })
+        section.innerHTML = '<h2>All movies added:</h2>';
+        section.appendChild(fragment);
 
-    movies.length !== 0 ? section.innerHTML = '<h2>All movies added:</h2>' : null;
-    section.appendChild(fragment);
+    } else {
+        section.innerHTML = '<h2>No movies added:</h2>';
+    }
 }
 
 /**
