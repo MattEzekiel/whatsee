@@ -20,16 +20,6 @@ function init(){
         .then(refeshView)
 }
 
-function addMovieDB(event) {
-    event.preventDefault();
-    db.movies.bulkPut([
-        {movieTitle: localStorage.getItem('Title'), moviePoster: localStorage.getItem('Poster')}
-    ])
-        /*.then(movieAdded)
-        .then(refeshView)*/
-        .then(showMovie)
-}
-
 /**
  * Show all movies
  * @param movies
@@ -65,21 +55,6 @@ function refeshView() {
         .then(showMovie);
 }
 
-/**
- * Create Notification
- */
-/*function movieAdded() {
-    let div = document.createElement('div');
-    let span = document.createElement('span');
-    let body = document.querySelector('body');
-    let img = '<img src="assets/close-circle.svg" alt="close error" class="close-icon" onclick="borrar()">';
-
-    div.classList.add('added-movie');
-    span.innerText = "Movie added to WishList";
-    div.appendChild(span);
-    div.innerHTML += img;
-    body.prepend(div);
-}*/
 
 /**
  * Starts

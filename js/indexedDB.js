@@ -51,15 +51,15 @@ function showMovie(movies) {
             erase = document.createElement('button'),
             span = document.createElement('span');
 
-        span.innerHTML = "delete";
+        // span.innerHTML = "delete";
         erase.setAttribute('id',movie.movieTitle);
         erase.setAttribute('class','delete');
         movieTitle.textContent = movie.movieTitle;
         moviePoster.setAttribute('src',movie.moviePoster);
         moviePoster.setAttribute('alt',movie.movieTitle + " Poster");
         movieDiv.setAttribute('class','movie');
+        erase.innerHTML="Delete";
 
-        erase.appendChild(span);
         movieDiv.appendChild(moviePoster);
         movieDiv.appendChild(movieTitle);
         movieDiv.appendChild(erase);
@@ -113,7 +113,7 @@ async function deletear(event) {
 
         db.movies.where('movieTitle').equals(id).delete()
             .then(refreshView);
-        window.location.reload();
+        /*window.location.reload();*/
     }
 }
 
