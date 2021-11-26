@@ -4,7 +4,7 @@ let db,btn;
  * Initialized
  */
 function init(){
-    db = new Dexie('Movies');
+    db = new Dexie('Wishlist');
     btn = document.querySelector('#add');
 
     if (btn){
@@ -25,8 +25,8 @@ function addMovieDB(event) {
     db.movies.bulkPut([
         {movieTitle: localStorage.getItem('Title'), moviePoster: localStorage.getItem('Poster')}
     ])
-        .then(movieAdded)
-        .then(refeshView)
+        /*.then(movieAdded)
+        .then(refeshView)*/
         .then(showMovie)
 }
 
@@ -52,7 +52,7 @@ function showMovie(movies) {
         movieDiv.appendChild(movieTitle);
         fragment.appendChild(movieDiv);
     })
-    section.innerHTML = '<h2>Last movies added:</h2>';
+    section.innerHTML = '<h2>Movie Selected:</h2>';
     section.appendChild(fragment);
 }
 
@@ -68,7 +68,7 @@ function refeshView() {
 /**
  * Create Notification
  */
-function movieAdded() {
+/*function movieAdded() {
     let div = document.createElement('div');
     let span = document.createElement('span');
     let body = document.querySelector('body');
@@ -79,7 +79,7 @@ function movieAdded() {
     div.appendChild(span);
     div.innerHTML += img;
     body.prepend(div);
-}
+}*/
 
 /**
  * Starts
@@ -90,6 +90,7 @@ window.onload = function () {
 
 function random() {
     const all = document.querySelectorAll('.movie');
+    /*console.log("ALL",all)*/
     for ( let i = 0; i < all.length; i++){
         all[i].classList.add('remove');
     }
