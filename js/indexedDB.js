@@ -70,7 +70,7 @@ function showMovie(movies) {
         section.appendChild(fragment);
 
     } else {
-        section.innerHTML = '<h2>No movies added:</h2>';
+        section.innerHTML = '<h2>No movies added</h2>';
     }
 }
 
