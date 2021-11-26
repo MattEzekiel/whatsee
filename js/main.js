@@ -81,7 +81,7 @@ let showHome = function (json) {
 
 
         div.classList.add('error-movie');
-        span.innerText = json.Error;
+        span.innerText = "No movie en database";
         div.appendChild(span);
         div.innerHTML += img;
         body.prepend(div);
