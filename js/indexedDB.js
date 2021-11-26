@@ -112,7 +112,7 @@ async function deletear(event) {
         //Por alguna razón no refresca, una razón más para odiar js
 
         db.movies.where('movieTitle').equals(id).delete()
-            .then(refreshView);
+            .then(refreshView)
         /*window.location.reload();*/
     }
 }
